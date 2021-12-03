@@ -1,6 +1,6 @@
 # IPA-SCOPE
 
-Get important strings inside [Info.plist] & and Binary file also all output of result it will save in .json file 
+Get important strings inside [Info.plist] & and Binary file also all output of result it will be saved in [app_binary].json , [app_plist_file].json file 
 
 # What new in this tool 
 * ✅Very fast more than last version
