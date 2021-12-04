@@ -12,3 +12,8 @@ Get important strings inside [Info.plist] & and Binary file also all output of r
 ![Script](https://github.com/xcodeOn1/ipa-scope/blob/main/output/photo_2021-12-03_17-51-47.jpg)
 # Output file 
 ![Script](https://github.com/xcodeOn1/ipa-scope/blob/main/output/photo_2021-12-03_17-52-20.jpg)
+
+# Installation :
+
+pip3 install git+https://github.com/aaronst/macholibre.git
+
