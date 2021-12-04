@@ -15,5 +15,7 @@ Get important strings inside [Info.plist] & and Binary file also all output of r
 
 # Installation :
 
-pip3 install git+https://github.com/aaronst/macholibre.git
+sudo pip3 install -r requirements.txt
+
+
 
