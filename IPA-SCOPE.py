@@ -6,11 +6,6 @@ from func import logo, Helper ,unzip_ip,Fore,Style,slow1,slow
 import plistlib
 import json
 from macholibre import parse
-try:
-    os.system("pip3 install git+https://github.com/aaronst/macholibre.git")
-    os.system("clear")
-except:
-    pass
 Y = Fore.LIGHTYELLOW_EX + Style.BRIGHT
 G = Fore.LIGHTGREEN_EX + Style.BRIGHT 
 R = Fore.LIGHTRED_EX + Style.BRIGHT
