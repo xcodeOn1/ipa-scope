@@ -3,6 +3,7 @@ from pip._vendor.colorama import Fore, Style
 from time import sleep
 import optparse
 import json
+from zipfile import ZipFile
 import time as mm
 import sys as n
 from time import sleep
@@ -36,13 +37,13 @@ def unzip_ip(ipaFile,wereSaveIt):
     # zip the file and unzip it also take the app name
     slow(f"[{Y}+{W}] wait now extra zip file")
     sleep(3)
-    name = ipaFile
-    filename = name.rsplit('.', 1)[0]
-    AF_filename = list(filename.split(" "))
-    os.system(f"mv {name} {AF_filename[0]}.zip")
-    os.system(f"mv {AF_filename[0]}.zip {wereSaveIt}")
-    unzip = f"unzip {AF_filename[0]}"
-    os.system(f"cd {wereSaveIt};{unzip}")
+    path_of_ipa = ipaFile
+    zip_ext = '.zip'
+    name_without_ext = os.path.splitext(path_of_ipa)[0]
+    file_after_zip = os.rename(path_of_ipa, name_without_ext + zip_ext)
+    zip_file_path = name_without_ext+".zip"
+    with ZipFile(zip_file_path, 'r') as Unzip:
+        Unzip.extractall(wereSaveIt)
 def Helper():
     logo = f'''
 {G}
