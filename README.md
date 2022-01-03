@@ -14,7 +14,10 @@ to run the script just use :
 
 python3 IPA-strings.py -i ipa_path -o output_of_IPA
 
+# [+] IPA-Strings :
 ![Script](https://github.com/xcodeOn1/ipa-scope/blob/main/output/info.png "Script Interface")
+![Script](https://github.com/xcodeOn1/ipa-scope/blob/main/output/json.png)
+![Script](https://github.com/xcodeOn1/ipa-scope/blob/main/output/links.png)
 
 
 # Photo
