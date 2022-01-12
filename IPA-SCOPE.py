@@ -88,7 +88,7 @@ try:
                                 print(f"{W}SSL transfom Allow : {R}False\n")
                         except KeyError: 'CFBundleURLName'
                         pass
-                        slow(f"{W}[{R}!!{W}]{B}Info.plist values will save as {W}[{Y}Info.json{W}]{B} check out !{W}\n")
+                        slow(f"{W}[{R}!!{W}]{B}Info.plist values will save as {W}[{Y}{AF_filename[0]}_plist_file.json{W}]{B} check out !{W}\n")
                         try:
                             # Read the bin file and get the straings
                             bin_path = f"{options.output}"+"/Payload/"+AF_filename[0]+".app/"+AF_filename[0]
@@ -110,9 +110,35 @@ try:
                                 parse(bin_path, out=out_file)
                             Get_String_bin(bin_name)
                         slow(f"{W}[{Y}+{W}]{B}Get binray Strings plist :{W}\n")
-                        slow(f"{W}[{R}!!{W}]{W}Coming soon Grab Emails,numbers and more")
                         slow(f"{W}[{R}!!{W}]{B}Binray Strings will save as {W}[{Y}{AF_filename[0]}_BIN.json{W}]{B} check out !{W}\n")
             Grab_Info()
+            def url_strings(wereSaveIt):
+                app_part = os.popen(f"cd {wereSaveIt}"+"/Payload/;ls").read()
+                name = app_part
+                filename = name.rsplit('.', 1)[0]
+                AF_filename = list(filename.split(" "))
+                info = wereSaveIt+"/Payload/"+AF_filename[0]+".app"+"/%s"%AF_filename[0]
+                fileName=os.path.expanduser(info)
+                binary_path= str(info)
+                full_path = wereSaveIt+"/Payload/"+AF_filename[0]+".app"+"/"
+                slow(f"[{Y}+{W}] wait now extra All Links\n")
+                os.system(f'strings {binary_path} |  grep -Eo "(http|https)://[a-zA-Z0-9./?=_%:-]*" | sort -u')
+                slow(f"\n[{Y}+{W}] Some interesting file\n")
+                os.system(f'cd {full_path} && find . -type f -name "*.json"')
+                os.system(f'cd {full_path} && find . -type f -name "*.cer"')
+                os.system(f'cd {full_path} && find . -type f -name "*.der"')
+                print(f"{W}You can check them in this folder[{R}{full_path}{W}]{W}")
+                slow(f"\n[{Y}+{W}] All Info.plist files\n")
+                os.system(f'cd {full_path} && find . -type f -name "*.plist"')
+                print(f"{W}You can check them in this folder[{R}{full_path}{W}]{W}")
+                slow(f"\n[{Y}+{W}]Some files about api\n")
+                os.system(f'cd {full_path} && grep -Ril "api"')
+                print(f"{W}You can check them in this folder[{R}{full_path}{W}]{W}")
+                Links = os.popen(f'strings {binary_path} |  grep -Eo "(http|https)://[a-zA-Z0-9./?=_%:-]*" | sort -u').read()
+                with open(f'output/{AF_filename[0]}.txt', 'a') as x:
+                        x.write(Links + '\n')
+                print(f"\n[{Y}+{W}]{R}All Links it will save in {Y}/output{R} file !!")
+            url_strings(options.output)
     main()
 except KeyboardInterrupt:
     os.system("clear")
