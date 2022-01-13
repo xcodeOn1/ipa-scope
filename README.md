@@ -1,24 +1,17 @@
 # IPA-SCOPE
 
-Get important strings inside [Info.plist] & and Binary file also all output of result it will be saved in [app_binary].json , [app_plist_file].json file 
-
+IPA-SCOPE is a Static analysis Tool that Targets ios applications and brings important information such as  Links, interesting files (.json,cer,der,api )
+and is very useful to show you good results when you pentesting ios apps 
 # What new in this tool 
 * ✅Fast & easy to use
 * ✅Get binary info like (API key,subdomain,and more .....)
+* ✅Save results 
 
-# IPA-SCOPE:
+# Installation :
 
-get links & api of app in many why also search for interesting files like json and cer,der and more
+git clone https://github.com/xcodeOn1/ipa-scope.git
 
-to run the script just use :
-
-python3 IPA-SCOPE.py -i ipa_path -o output_of_IPA
-
-# [+] IPA-Strings :
-![Script](https://github.com/xcodeOn1/ipa-scope/blob/main/output/info.png "Script Interface")
-![Script](https://github.com/xcodeOn1/ipa-scope/blob/main/output/json.png)
-![Script](https://github.com/xcodeOn1/ipa-scope/blob/main/output/links.png)
-
+sudo pip3 install -r requirements.txt
 
 # Photo
 ![Script](https://github.com/xcodeOn1/ipa-scope/blob/main/output/photo_2021-12-03_17-29-34.jpg "Script Interface")
@@ -26,10 +19,5 @@ python3 IPA-SCOPE.py -i ipa_path -o output_of_IPA
 ![Script](https://github.com/xcodeOn1/ipa-scope/blob/main/output/photo_2021-12-03_17-51-47.jpg)
 # Output file 
 ![Script](https://github.com/xcodeOn1/ipa-scope/blob/main/output/photo_2021-12-03_17-52-20.jpg)
-
-# Installation :
-
-sudo pip3 install -r requirements.txt
-
 
 
