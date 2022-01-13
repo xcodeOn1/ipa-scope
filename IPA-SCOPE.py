@@ -45,8 +45,8 @@ try:
                     with open(f'output/{AF_filename[0]}_plist_file.json', 'w') as outfile:
                         json.dump(pl,outfile)
                         '''
-                        [p.1] that mean some ios app don't have this key in info.plist because 
-                        info.plist it xml format file whcie have key,string also some time dic inside dic.
+                        [p.1] that means some ios app don't have this key in info.plist because of 
+                        the info. plist it XML format file which has the key, the string also some time dic inside dic.
                         '''
                         # p.1
                         try:
@@ -115,7 +115,7 @@ try:
                 fileName=os.path.expanduser(info)
                 binary_path= str(info)
                 full_path = wereSaveIt+"/Payload/"+AF_filename[0]+".app"+"/"
-                slow(f"[{Y}+{W}] wait now extra All Links\n")
+                slow(f"[{Y}+{W}] All Links\n")
                 os.system(f'strings {binary_path} |  grep -Eo "(http|https)://[a-zA-Z0-9./?=_%:-]*" | sort -u')
                 slow(f"\n[{Y}+{W}] Some interesting file\n")
                 os.system(f'cd {full_path} && find . -type f -name "*.json"')
@@ -129,8 +129,8 @@ try:
                 os.system(f'cd {full_path} && grep -Ril "api"')
                 print(f"{W}You can check them in this folder[{R}{full_path}{W}]{W}")
                 Links = os.popen(f'strings {binary_path} |  grep -Eo "(http|https)://[a-zA-Z0-9./?=_%:-]*" | sort -u').read()
-                with open(f'output/{AF_filename[0]}.txt', 'a') as x:
-                        x.write(Links + '\n')
+                with open(f'output/{AF_filename[0]}_Links.txt', 'a') as x:
+                        x.write('[+]All_Links\n'+ Links)
                 print(f"\n[{Y}+{W}]{R}All Links it will save in {Y}/output{R} file !!")
             url_strings(options.output)
     main()
