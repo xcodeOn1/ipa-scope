@@ -13,8 +13,8 @@ W = Fore.LIGHTWHITE_EX + Style.BRIGHT
 B = Fore.LIGHTBLUE_EX + Style.BRIGHT 
 
 parser = optparse.OptionParser()
-parser.add_option("-i", "--ipa",dest="ipa", help="drop ipa file to anlasy")
-parser.add_option("-o", "--output",dest="output", help="where you want save the zip file")
+parser.add_option("-i", "--ipa",dest="ipa", help="drop ipa file to analysis app ")
+parser.add_option("-o", "--output",dest="output", help="where you want save the app folder file")
 (options, arguments) = parser.parse_args()
 try:
     def main():
@@ -23,29 +23,23 @@ try:
         if not all(unzip_file):   
             Helper()
             print("")
-        ### if else the program will zip & unzip the .ipa file and grab all binray strings & info.plist as well
+        ### if else program will zip & unzip the .ipa file and grab all binray strings & info.plist as well
         else:
             logo()
             unzip_ip(options.ipa,options.output)
             sleep(3)
             os.system("clear")
             logo()
-            slow(f"[{Y}+{W}]You will found you app in : {Y}{options.output}/Payload")
-            scan = str(input(f"{W}[{Y}+{W}]{W}Do you want scan the app '{G}y/{R}n'{W}: "))
-            if scan == "n":
-                print(f"{W}[{Y}!{W}]Ok than see you later !!")
-                exit()
-            else:
-                logo()
-                def Grab_Info():
+            print(f"[{Y}+{W}]You will found you app in : {Y}{options.output}/Payload")
+            logo()
+            def Grab_Info():
                     app_part = os.popen(f"cd {options.output}"+"/Payload/;ls").read()
                     name = app_part
                     filename = name.rsplit('.', 1)[0]
                     AF_filename = list(filename.split(" "))
                     info = options.output+"/Payload/"+AF_filename[0]+".app"+"/Info.plist"
                     fileName=os.path.expanduser(info)
-                    slow(f"{W}[{Y}+{W}]{B}Info plist :{W}\n")
-                    print()
+                    print(f"{W}[{Y}+{W}]{B}Info plist :{W}\n")
                     with open(fileName, 'rb') as f:
                         pl = plistlib.load(f)
                     with open(f'output/{AF_filename[0]}_plist_file.json', 'w') as outfile:
@@ -88,7 +82,7 @@ try:
                                 print(f"{W}SSL transfom Allow : {R}False\n")
                         except KeyError: 'CFBundleURLName'
                         pass
-                        slow(f"{W}[{R}!!{W}]{B}Info.plist values will save as {W}[{Y}{AF_filename[0]}_plist_file.json{W}]{B} check out !{W}\n")
+                        print(f"{W}[{R}!!{W}]{B}Info.plist values will save as {W}[{Y}{AF_filename[0]}_plist_file.json{W}]{B} check out !{W}\n")
                         try:
                             # Read the bin file and get the straings
                             bin_path = f"{options.output}"+"/Payload/"+AF_filename[0]+".app/"+AF_filename[0]
@@ -109,8 +103,8 @@ try:
                                 out_file = open(f'output/{AF_filename[0]}_BIN.json', 'w')
                                 parse(bin_path, out=out_file)
                             Get_String_bin(bin_name)
-                        slow(f"{W}[{Y}+{W}]{B}Get binray Strings plist :{W}\n")
-                        slow(f"{W}[{R}!!{W}]{B}Binray Strings will save as {W}[{Y}{AF_filename[0]}_BIN.json{W}]{B} check out !{W}\n")
+                        print(f"{W}[{Y}+{W}]{B}Get binray Strings plist :{W}\n")
+                        print(f"{W}[{R}!!{W}]{B}Binray Strings will save as {W}[{Y}{AF_filename[0]}_BIN.json{W}]{B} check out !{W}\n")
             Grab_Info()
             def url_strings(wereSaveIt):
                 app_part = os.popen(f"cd {wereSaveIt}"+"/Payload/;ls").read()
