@@ -1,7 +1,7 @@
 # IPA-SCOPE
 
 IPA-SCOPE is a Static analysis Tool that Targets ios applications and brings important information such as  Links, interesting files (.json,cer,der,api )
-and is very useful to show you good results when you pentesting ios apps 
+and is very useful to show good results when you pentesting ios apps 
 # What new in this tool 
 * ✅Fast & easy to use
 * ✅Get binary info like (API key,subdomain,and more .....)
