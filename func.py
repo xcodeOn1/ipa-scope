@@ -34,16 +34,20 @@ W = Fore.LIGHTWHITE_EX + Style.BRIGHT
 B = Fore.LIGHTBLUE_EX + Style.BRIGHT 
 
 def unzip_ip(ipaFile,wereSaveIt):
-    # zip the file and unzip it also take the app name
-    slow(f"[{Y}+{W}] wait now extra zip file")
-    sleep(3)
-    path_of_ipa = ipaFile
-    zip_ext = '.zip'
-    name_without_ext = os.path.splitext(path_of_ipa)[0]
-    file_after_zip = os.rename(path_of_ipa, name_without_ext + zip_ext)
-    zip_file_path = name_without_ext+".zip"
-    with ZipFile(zip_file_path, 'r') as Unzip:
-        Unzip.extractall(wereSaveIt)
+    try:
+         # zip the file and unzip it also take the app name
+        slow(f"[{Y}+{W}] wait now extra zip file")
+        sleep(3)
+        path_of_ipa = ipaFile
+        zip_ext = '.zip'
+        name_without_ext = os.path.splitext(path_of_ipa)[0]
+        file_after_zip = os.rename(path_of_ipa, name_without_ext + zip_ext)
+        zip_file_path = name_without_ext+".zip"
+        with ZipFile(zip_file_path, 'r') as Unzip:
+            Unzip.extractall(wereSaveIt)
+    except FileNotFoundError:
+        slow(f"\n[{R}!!{W}]{Y} Make sure app end with (.ipa)")
+        exit()
 def Helper():
     logo = f'''
 {G}
