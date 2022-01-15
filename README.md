@@ -14,10 +14,9 @@ git clone https://github.com/xcodeOn1/ipa-scope.git
 sudo pip3 install -r requirements.txt
 
 # Photo
-![Script](https://github.com/xcodeOn1/ipa-scope/blob/main/output/photo_2021-12-03_17-29-34.jpg "Script Interface")
-# Get strings from binary and Info.plist
-![Script](https://github.com/xcodeOn1/ipa-scope/blob/main/screenshot/IPAgo.png)
+![Script](https://github.com/xcodeOn1/ipa-scope/blob/main/screenshot/json.png "Script Interface")
+![Script](https://github.com/xcodeOn1/ipa-scope/blob/main/screenshot/links.png)
 # Output file 
-![Script](https://github.com/xcodeOn1/ipa-scope/blob/main/output/photo_2021-12-03_17-52-20.jpg)
+![Script](https://github.com/xcodeOn1/ipa-scope/blob/main/screenshot/result.png)
 
 
