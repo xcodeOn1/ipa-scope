@@ -5,7 +5,9 @@ and is very useful to show good results when you pentesting ios apps
 # What new in this tool 
 * ✅Fast & easy to use
 * ✅Get binary info like (API key,subdomain,and more .....)
-* ✅Save results 
+* ✅Save & show filter restult
+* ✅Get linked libraries in target app
+* ✅Get All strings & class in app
 
 # Installation :
 
