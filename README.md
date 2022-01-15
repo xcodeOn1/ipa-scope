@@ -1,5 +1,5 @@
 # IPA-SCOPE
-![Script](https://github.com/xcodeOn1/ipa-scope/blob/main/screenshot/IPA_SCOPEv.2_logo.png)
+![Script](https://github.com/xcodeOn1/ipa-scope/blob/main/screenshot/logo.png)
 IPA-SCOPE is a Static analysis Tool that Targets ios applications and brings important information such as  Links, interesting files (.json,cer,der,api )
 and is very useful to show good results when you pentesting ios apps 
 # What new in this tool 
