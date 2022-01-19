@@ -7,6 +7,7 @@ from zipfile import ZipFile
 import time as mm
 import sys as n
 from time import sleep
+from pathlib import Path
 def slow(M):  ## By Twitter : @Matrix0700
     for c in M + '\n':
         n.stdout.write(c)
@@ -48,6 +49,15 @@ def unzip_ip(ipaFile,wereSaveIt):
     except FileNotFoundError:
         slow(f"\n[{R}!!{W}]{Y} Make sure app end with (.ipa)")
         exit()
+def Rename_ipa(ipaFile):
+    p = Path(ipaFile)
+    zip_path = ipaFile
+    without_extra_slash = os.path.normpath(zip_path)
+    zip_app_name = os.path.basename(without_extra_slash)
+    full_path= str(p.parent) + f"/{zip_app_name}"
+    zip_ext = '.ipa'
+    last_path = os.path.splitext(full_path)[0]
+    os.system(f"mv {last_path}.zip {last_path}.ipa")
 def Helper():
     logo = f'''
 {G}
