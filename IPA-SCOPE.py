@@ -2,7 +2,7 @@ import optparse
 import os
 from sys import path
 from time import sleep
-from func import logo, Helper ,unzip_ip,Fore,Style,slow1,slow
+from func import logo, Helper ,unzip_ip,Fore,Style,slow1,slow,Rename_ipa
 import plistlib
 import json
 from macholibre import parse
@@ -149,6 +149,7 @@ try:
                         x.write('[+]Data sction\n' + data_section + '\n' + '\n[+]Linked_libraries\n' + Linked_libraries + '\n')
                 print(f"\n[{Y}+{W}]{R}All Links & Strings it will save in {Y}/output{R} file !!")
             url_strings(options.output)
+            Rename_ipa(options.ipa)
     main()
 except KeyboardInterrupt:
     os.system("clear")
