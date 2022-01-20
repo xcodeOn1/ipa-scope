@@ -71,7 +71,7 @@ def Helper():
  ▒ ░░░         ░   ▒   ░  ░  ░  ░        ░ ░ ░ ▒  ░░          ░   
  ░                 ░  ░      ░  ░ ░          ░ ░              ░  ░
                                 ░                                 
-        {W}  Coded By : {Y}Xcode | {B}Twitter: {W}@Xcodeone1 
+        {W}  Coded By : {Y}Xcode0x | {B}Twitter: {W}@Xcodeone1 
 
                  {B}Telegram : {W}https://t.me/x0Saudi
 
@@ -98,7 +98,7 @@ def logo():
  ▒ ░░░         ░   ▒   ░  ░  ░  ░        ░ ░ ░ ▒  ░░          ░   
  ░                 ░  ░      ░  ░ ░          ░ ░              ░  ░
                                 ░                                 
-        {W}  Coded By : {Y}Xcode | {B}Twitter: {W}@Xcodeone1 
+        {W}  Coded By : {Y}Xcode0x | {B}Twitter: {W}@Xcodeone1 
         
                  {B}Telegram : {W}https://t.me/x0Saudi
 
