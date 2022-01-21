@@ -9,6 +9,10 @@ and is very useful to show good results when you pentesting ios apps
 * ✅Get linked libraries in target app
 * ✅Get All strings & class in app
 
+# Requirements :
+
+it only work with Kali linux .
+
 # Installation :
 
 git clone https://github.com/xcodeOn1/ipa-scope.git
