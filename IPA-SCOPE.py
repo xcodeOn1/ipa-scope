@@ -5,12 +5,14 @@ from time import sleep
 from func import logo, Helper ,unzip_ip,Fore,Style,slow1,slow,Rename_ipa
 import plistlib
 import json
-from macholibre import parse
+import sys
 Y = Fore.LIGHTYELLOW_EX + Style.BRIGHT
 G = Fore.LIGHTGREEN_EX + Style.BRIGHT 
 R = Fore.LIGHTRED_EX + Style.BRIGHT
 W = Fore.LIGHTWHITE_EX + Style.BRIGHT 
 B = Fore.LIGHTBLUE_EX + Style.BRIGHT 
+
+scan_plist = sys.argv
 
 parser = optparse.OptionParser()
 parser.add_option("-i", "--ipa",dest="ipa", help="drop ipa file to analysis app ")
@@ -39,10 +41,12 @@ try:
                     AF_filename = list(filename.split(" "))
                     info = options.output+"/Payload/"+AF_filename[0]+".app"+"/Info.plist"
                     fileName=os.path.expanduser(info)
+                    #Make result folder for Target IPA
+                    os.system(f"mkdir output/{AF_filename[0]}")
                     print(f"{W}[{Y}+{W}]{B}Info plist :{W}\n")
                     with open(fileName, 'rb') as f:
                         pl = plistlib.load(f)
-                    with open(f'output/{AF_filename[0]}_plist_file.json', 'w') as outfile:
+                    with open(f'output/{AF_filename[0]}/{AF_filename[0]}_plist_file.json', 'w') as outfile:
                         json.dump(pl,outfile)
                         '''
                         [p.1] that mean some ios app don't have this key in info.plist because 
@@ -83,28 +87,6 @@ try:
                         except KeyError: 'CFBundleURLName'
                         pass
                         print(f"{W}[{R}!!{W}]{B}Info.plist values will save as {W}[{Y}{AF_filename[0]}_plist_file.json{W}]{B} check out !{W}\n")
-                        try:
-                            # Read the bin file and get the straings
-                            bin_path = f"{options.output}"+"/Payload/"+AF_filename[0]+".app/"+AF_filename[0]
-                            strings_in_bin = parse(bin_path)
-                            out_file = open(f'output/{AF_filename[0]}_BIN.json', 'w')
-                            parse(bin_path, out=out_file)
-                        except FileNotFoundError:
-                            slow1(f"{W}[{R}×{W}]There is Erorr !! ")
-                            slow1(f"{W}[{R}×{W}]Check the binary name Here : {options.output}"+"/Payload/"+AF_filename[0]+".app/")
-                            sleep(3)
-                            os.system("clear")
-                            logo()
-                            bin_name = str(input(f"{W}[{Y}!{W}] Put the binary name Here >> "))
-                            def Get_String_bin(binName):
-                                # Read the bin file and get the straings
-                                bin_path = f"{options.output}"+"/Payload/"+AF_filename[0]+".app/"+bin_name
-                                strings_in_bin = parse(bin_path)
-                                out_file = open(f'output/{AF_filename[0]}_BIN.json', 'w')
-                                parse(bin_path, out=out_file)
-                            Get_String_bin(bin_name)
-                        print(f"{W}[{Y}+{W}]{B}Get binray Strings plist :{W}\n")
-                        print(f"{W}[{R}!!{W}]{B}Binray Strings will save as {W}[{Y}{AF_filename[0]}_BIN.json{W}]{B} check out !{W}\n")
             Grab_Info()
             def url_strings(wereSaveIt):
                 app_part = os.popen(f"cd {wereSaveIt}"+"/Payload/;ls").read()
@@ -116,37 +98,46 @@ try:
                 binary_path= str(info)
                 full_path = wereSaveIt+"/Payload/"+AF_filename[0]+".app"+"/"
                 slow(f"[{Y}+{W}] All Links\n")
-                os.system(f'strings {binary_path} |  grep -Eo "(http|https)://[a-zA-Z0-9./?=_%:-]*" | sort -u')
+                links = os.system(f'strings  {binary_path} |  grep -Eo "(http|https)://[a-zA-Z0-9./?=_%:-]*" | sort -u')
                 slow(f"\n[{Y}+{W}] Some interesting file\n")
-                os.system(f'cd {full_path} && find . -type f -name "*.json"')
+                json_files = os.popen(f'cd {full_path} && find . -type f -name "*.json"').read()
+                print(json_files)
                 sleep(2)
-                os.system(f'cd {full_path} && find . -type f -name "*.cer"')
+                certificate = os.popen(f'cd {full_path} && find . -type f -name "*.cer"').read()
+                print(certificate)
                 sleep(2)
-                os.system(f'cd {full_path} && find . -type f -name "*.der"')
+                certificate_der = os.popen(f'cd {full_path} && find . -type f -name "*.der"').read()
+                print(certificate_der)
                 sleep(2)
                 print(f"{W}You can check them in this folder[{R}{full_path}{W}]{W}")
                 slow(f"\n[{Y}+{W}] All Info.plist files\n")
-                os.system(f'cd {full_path} && find . -type f -name "*.plist"')
+                plist_files = os.popen(f'cd {full_path} && find . -type f -name "*.plist"').read()
+                print(plist_files)
                 print(f"{W}You can check them in this folder[{R}{full_path}{W}]{W}")
                 slow(f"\n[{Y}+{W}]Some files about api\n")
-                os.system(f'cd {full_path} && grep -Ril "api"')
+                api = os.popen(f'cd {full_path} && grep -Ril "api"').read()
+                print(api)
+                with open(f'output/{AF_filename[0]}/{AF_filename[0]}_intresting_files.txt', 'a') as x:
+                    x.write('[+]json files\n'+json_files+'\n'+'[+]certificate[CER]\n'+certificate+'\n'+'[+]certificate[DER]\n'+certificate_der+'\n'+'[+]API\n'+api+'\n'+'[+]Plist files\n'+plist_files)
                 slow(f"\n[{Y}+{W}]Extract Data Section & addr \n")
                 slow(f"[{Y}+{W}]{R}Check txt file in /output")
                 slow(f"\n[{Y}+{W}]Extract Strings  \n")
                 slow(f"[{Y}+{W}]{R}Check txt file in /output")
                 print(f"{W}You can check them in this folder[{R}{full_path}{W}]{W}")
                 sleep(1)
-                Links = os.popen(f'strings {binary_path} |  grep -Eo "(http|https)://[a-zA-Z0-9./?=_%:-]*" | sort -u').read()
+                Links = os.popen(f'strings  {binary_path} |  grep -Eo "(http|https)://[a-zA-Z0-9./?=_%:-]*" | sort -u').read()
                 data_section = os.popen(f'rabin2 -qz {binary_path}').read()
                 sleep(2)
                 All_strings = os.popen(f'rabin2 -zzz {binary_path}').read()
                 sleep(2)
                 Linked_libraries = os.popen(f'rabin2 -l {binary_path}').read()
                 sleep(2)
-                with open(f'output/{AF_filename[0]}_Links_Strings.txt', 'a') as x:
-                        x.write('[+]All_Links\n'+ Links + '\n' + '[+]All_strings\n' + All_strings + '\n')
-                with open(f'output/{AF_filename[0]}_Linked_libraries.txt', 'a') as x:
+                with open(f'output/{AF_filename[0]}/{AF_filename[0]}_Links.txt', 'a') as x:
+                        x.write(Links)
+                with open(f'output/{AF_filename[0]}/{AF_filename[0]}_Linked_libraries.txt', 'a') as x:
                         x.write('[+]Data sction\n' + data_section + '\n' + '\n[+]Linked_libraries\n' + Linked_libraries + '\n')
+                with open(f'output/{AF_filename[0]}/{AF_filename[0]}_Strings.txt', 'a') as x:
+                        x.write('[+]All_strings\n' + All_strings + '\n')
                 print(f"\n[{Y}+{W}]{R}All Links & Strings it will save in {Y}/output{R} file !!")
             url_strings(options.output)
             Rename_ipa(options.ipa)
