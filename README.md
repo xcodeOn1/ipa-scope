@@ -11,7 +11,7 @@ and is very useful to show good results when you pentesting ios apps
 
 # Requirements :
 
-it only work with Kali linux .
+linux or Mac OS
 
 # Installation :
 
