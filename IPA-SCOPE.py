@@ -140,7 +140,6 @@ try:
                         x.write('[+]All_strings\n' + All_strings + '\n')
                 print(f"\n[{Y}+{W}]{R}All Links & Strings it will save in {Y}/output{R} file !!")
             url_strings(options.output)
-            Rename_ipa(options.ipa)
     main()
 except KeyboardInterrupt:
     os.system("clear")
