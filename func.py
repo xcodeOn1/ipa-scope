@@ -45,9 +45,9 @@ B = Fore.LIGHTBLUE_EX + Style.BRIGHT
 #         zip_file_path = name_without_ext+".zip"
 #         with ZipFile(zip_file_path, 'r') as Unzip:
 #             Unzip.extractall(wereSaveIt)
-    except FileNotFoundError:
-        slow(f"\n[{R}!!{W}]{Y} Make sure app end with (.ipa)")
-        exit()
+    # except FileNotFoundError:
+    #     slow(f"\n[{R}!!{W}]{Y} Make sure app end with (.ipa)")
+    #     exit()
 def Rename_ipa(ipaFile):
     p = Path(ipaFile)
     zip_path = ipaFile
