@@ -6,6 +6,7 @@ import json
 import time as mm
 import sys as n
 from time import sleep
+import zipfile
 from pathlib import Path
 def slow(M):  ## By Twitter : @Matrix0700
     for c in M + '\n':
@@ -33,30 +34,10 @@ R = Fore.LIGHTRED_EX + Style.BRIGHT
 W = Fore.LIGHTWHITE_EX + Style.BRIGHT 
 B = Fore.LIGHTBLUE_EX + Style.BRIGHT 
 
-# def unzip_ip(ipaFile,wereSaveIt):
-#     try:
-#          # zip the file and unzip it also take the app name
-#         slow(f"[{Y}+{W}] wait now extra zip file")
-#         sleep(3)
-#         path_of_ipa = ipaFile
-#         zip_ext = '.zip'
-#         name_without_ext = os.path.splitext(path_of_ipa)[0]
-#         file_after_zip = os.rename(path_of_ipa, name_without_ext + zip_ext)
-#         zip_file_path = name_without_ext+".zip"
-#         with ZipFile(zip_file_path, 'r') as Unzip:
-#             Unzip.extractall(wereSaveIt)
-    # except FileNotFoundError:
-    #     slow(f"\n[{R}!!{W}]{Y} Make sure app end with (.ipa)")
-    #     exit()
-def Rename_ipa(ipaFile):
-    p = Path(ipaFile)
-    zip_path = ipaFile
-    without_extra_slash = os.path.normpath(zip_path)
-    zip_app_name = os.path.basename(without_extra_slash)
-    full_path= str(p.parent) + f"/{zip_app_name}"
-    zip_ext = '.ipa'
-    last_path = os.path.splitext(full_path)[0]
-    os.system(f"mv {last_path}.zip {last_path}.ipa")
+def unzip_ip(ipaFile,wereSaveIt):
+    slow(f"[{Y}+{W}] wait now extra zip file")
+    with zipfile.ZipFile(ipaFile, 'r') as ipa_zip:
+        ipa_zip.extractall(wereSaveIt)
 def Helper():
     logo = f'''
 {G}
