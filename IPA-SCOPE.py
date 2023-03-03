@@ -2,7 +2,7 @@ import optparse
 import os
 from sys import path
 from time import sleep
-from func import logo, Helper,Fore,Style,slow1,slow,Rename_ipa
+from func import logo, Helper,unzip_ip,Fore,Style,slow1,slow
 import plistlib
 import json
 import sys
