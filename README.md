@@ -19,6 +19,10 @@ git clone https://github.com/xcodeOn1/ipa-scope.git
 
 sudo pip3 install -r requirements.txt
 
+if you have kali or "radare2" install in you OS you don't need for this step :
+
+sudo python3 setup.py
+
 # How Use it :
 
 python3 IPA_SCOPE.py -i ipa_path -o were_you_want_save_it
